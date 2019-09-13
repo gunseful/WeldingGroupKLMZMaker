@@ -1,0 +1,336 @@
+body {
+    background: url("tlotr.png") no-repeat 50% 50% fixed;
+}
+
+
+div.leftbottomangle{
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+}
+
+div.lefttopangle{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 120%;
+    padding: 5px 0;
+    transition: 0.2s ease-in-out;
+    border-radius: 5px;
+    color: #000000;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+input:invalid:not(:placeholder-shown) {
+    border: 2px solid red;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    opacity: 0.5;
+}
+
+a.selected {
+    box-shadow: 0 0 25px rgb(255,255,255);
+    background: linear-gradient(1deg, rgb(190, 200, 255), rgba(235, 245, 255, 0.9));
+}
+
+a.current-page {
+    pointer-events: none;
+    cursor: default;
+    font-size: 150%;
+    box-shadow: 0 0;
+}
+
+a:hover {
+    transition: 0.3s;
+    box-shadow: 0 0 25px rgb(255,255,255);
+}
+
+a:active {
+    background: linear-gradient(1deg, rgb(255, 255, 255), rgba(210, 210, 210, 0.9));
+}
+
+.link a {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    vertical-align: bottom;
+    background: url("icons.png") no-repeat;
+}
+
+.icon-add {
+    background-position: 0 0;
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+.icon-delete {
+    background-position: -24px 0;
+}
+
+.icon-edit {
+    background-position: -49px 0;
+}
+
+.icon-watched {
+    background-position: -74px 0;
+}
+
+.icon-first {
+    background-position: -125px 0;
+    margin: 0;
+}
+
+.icon-prev {
+    background-position: -147px 0;
+    margin: 0;
+}
+
+.icon-next {
+    background-position: -166px 0;
+    margin: 0;
+}
+
+.icon-last {
+    background-position: -188px 0;
+    margin: 0;
+}
+
+.heading {
+    text-shadow: 2px 2px 5px #7F7F7F;
+    color: #e7f6ff;
+    font-size: 30px;
+}
+
+.heading2 {
+    text-shadow: 2px 2px 5px #7F7F7F;
+    color: #e7f6ff;
+    font-size: 25px;
+}
+
+.style {
+    border-spacing: 0 12px;
+    font:  bold 100% Georgia, serif;
+    margin: 40px auto;
+    text-shadow: 1px 1px 1px #7F7F7F;
+    background: #0000;
+    text-align: center;
+    vertical-align: middle;
+    width: 20%;
+}
+
+.style th {
+    color: white;
+    background: rgba(0, 5, 25, 0.75);
+    padding: 10px;
+    font-size: 130%;
+    border-top: 1px solid #efeaea;
+    border-bottom: 1px solid #efeaea;
+    width: 1%;
+}
+
+.style td {
+    width: 1%;
+    font-size: large;
+    padding: 5px;
+}
+
+.style tr {
+    height: 30px;
+    box-shadow: 0 0 5px rgb(15,15,45);
+}
+
+.style tr:nth-child(even) {
+    background: linear-gradient(1deg, rgb(180, 210, 255), rgba(255, 255, 255, 0.9));
+}
+
+.style tr:nth-child(odd) {
+    background: linear-gradient(1deg, rgb(205, 230, 255), rgba(255, 255, 255, 0.9));
+}
+
+.style input {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background: linear-gradient(1deg, rgb(205, 230, 255), rgba(255, 255, 255, 0.9));
+    outline: none;
+    height: 30px;
+    width: 300px;
+    font:  bold 20px Georgia, serif;
+    text-align: center;
+    text-shadow: 1px 1px 1px #7F7F7F;
+    box-shadow: 3px 3px 25px rgb(15,15,45);
+}
+
+.checkbox label {
+    display: block;
+    border-radius: 3px;
+    background: linear-gradient(1deg, rgb(180, 200, 220), rgba(255, 255, 255, 0.9));
+    padding-top: 5px;
+    height: 25px;
+    width: 300px;
+    font-size: 20px;
+    box-shadow: 3px 3px 25px rgb(15,15,45);
+    margin: auto;
+    color: rgba(0,0,0,0.2);
+    text-shadow: 0 0;
+    cursor: pointer;
+}
+
+.checkbox label::selection, .checkbox span::selection {
+    background: transparent;
+}
+
+.checkbox label:hover {
+    box-shadow: 0 0 25px rgb(155,155,155);
+}
+
+.checkbox label:active {
+    box-shadow: 0 0 25px rgb(255,255,255);
+}
+
+.checkbox input[type=checkbox] {
+    display: none;
+}
+
+.checkbox-common {
+    display: block;
+    height: 30px;
+    width: 40px;
+    position:relative;
+    margin: auto;
+    font-size: 25px;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px 1px #7F7F7F;
+}
+
+.checkbox-yes {
+    bottom: 57px;
+    left: 100px;
+    opacity:0;
+}
+
+.checkbox-no {
+    bottom: 27px;
+    right: 100px;
+}
+
+#watched:checked ~ .checkbox-yes {
+    opacity:1;
+}
+
+#watched:checked ~ .checkbox-no {
+    opacity:0;
+}
+
+input[type=submit] {
+    width: 100px;
+    height: 35px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+input[type=submit]:active {
+    transition: 0s;
+    background: linear-gradient(1deg, rgb(255, 255, 255), rgba(210, 210, 210, 0.9));
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input:hover {
+    box-shadow: 0 0 25px rgb(155,155,155);
+}
+
+input:focus {
+    box-shadow: 0 0 25px rgb(255,255,255);
+}
+
+::-webkit-input-placeholder {
+    font:  bold 100% Georgia, serif;
+    color: rgba(0,0,0,0.2);
+    text-shadow: 0 0;
+}
+
+.left-side {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.right-side {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.title {
+    text-align: left;
+    font-size: 130%;
+}
+
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box select {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    width: 500px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+
+.box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+    padding: 30px;
+}
+
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-input{padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:100%}
+.w3-amber,.w3-hover-amber:hover{color:#000!important;background-color:#ffc107!important}
+.w3-aqua,.w3-hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
+.w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:#2196F3!important}
+.w3-light-blue,.w3-hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important}
+.w3-brown,.w3-hover-brown:hover{color:#fff!important;background-color:#795548!important}
+.w3-cyan,.w3-hover-cyan:hover{color:#000!important;background-color:#00bcd4!important}
+.w3-blue-grey,.w3-hover-blue-grey:hover,.w3-blue-gray,.w3-hover-blue-gray:hover{color:#fff!important;background-color:#607d8b!important}
+.w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#4CAF50!important}
+.w3-light-green,.w3-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important}
+.w3-indigo,.w3-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important}
+.w3-khaki,.w3-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important}
+.w3-lime,.w3-hover-lime:hover{color:#000!important;background-color:#cddc39!important}
+.w3-orange,.w3-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
+.w3-deep-orange,.w3-hover-deep-orange:hover{color:#fff!important;background-color:#ff5722!important}
+.w3-pink,.w3-hover-pink:hover{color:#fff!important;background-color:#e91e63!important}
+.w3-purple,.w3-hover-purple:hover{color:#fff!important;background-color:#9c27b0!important}
+.w3-deep-purple,.w3-hover-deep-purple:hover{color:#fff!important;background-color:#673ab7!important}
+.w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#f44336!important}
