@@ -2,12 +2,12 @@ package test.entity;
 
 public class Seam {
     private int id;
-    private Katet katet;
+    private Cathet cathet;
     private double lenght;
 
-    public Seam(int id, Katet katet, double lenght) {
+    public Seam(int id, Cathet cathet, double lenght) {
         this.id = id;
-        this.katet = katet;
+        this.cathet = cathet;
         this.lenght = lenght;
     }
 
@@ -19,12 +19,12 @@ public class Seam {
         this.id = id;
     }
 
-    public Katet getKatet() {
-        return katet;
+    public Cathet getCathet() {
+        return cathet;
     }
 
-    public void setKatet(Katet katet) {
-        this.katet = katet;
+    public void setCathet(Cathet cathet) {
+        this.cathet = cathet;
     }
 
     public double getLenght() {
@@ -38,7 +38,7 @@ public class Seam {
     @Override
     public String toString() {
         return "Seam{" +
-                "katet=" + katet +
+                "katet=" + cathet +
                 ", lenght=" + lenght +
                 '}';
     }

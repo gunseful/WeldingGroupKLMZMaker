@@ -1,25 +1,23 @@
 package test.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="katet")
-public class Katet {
+@Table(name="Cathet")
+public class Cathet {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    private double koef;
-    private int k;
+    private double coefficient;
+    private int cathet;
     private String seam;
 
-    public Katet() {
+    public Cathet() {
     }
 
-    public Katet(double koef, int k, String seam) {
-        this.koef = koef;
-        this.k = k;
+    public Cathet(double coefficient, int cathet, String seam) {
+        this.coefficient = coefficient;
+        this.cathet = cathet;
         this.seam = seam;
     }
 
@@ -31,20 +29,20 @@ public class Katet {
         this.id = id;
     }
 
-    public double getKoef() {
-        return koef;
+    public double getCoefficient() {
+        return coefficient;
     }
 
-    public void setKoef(double koef) {
-        this.koef = koef;
+    public void setCoefficient(double coefficient) {
+        this.coefficient = coefficient;
     }
 
-    public int getK() {
-        return k;
+    public int getCathet() {
+        return cathet;
     }
 
-    public void setK(int k) {
-        this.k = k;
+    public void setCathet(int cathet) {
+        this.cathet = cathet;
     }
 
     public String getSeam() {
@@ -59,8 +57,8 @@ public class Katet {
     public String toString() {
         return "Katet{" +
                 "id=" + id +
-                ", koef=" + koef +
-                ", k=" + k +
+                ", koef=" + coefficient +
+                ", k=" + cathet +
                 ", seam='" + seam + '\'' +
                 '}';
     }

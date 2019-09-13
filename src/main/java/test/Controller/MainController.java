@@ -1,36 +1,31 @@
 package test.Controller;
 
-import org.hibernate.validator.constraints.Length;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import test.Dao.KatetDao;
-import test.entity.Katet;
+import test.Dao.CathetDao;
+import test.entity.Cathet;
 import test.entity.Seam;
 
-import javax.validation.Valid;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Controller
 public class MainController {
 
-    public double wire = 0.0;
-    public double gas = 0.0;
-    public double gasCO2 = 0.0;
-    public double gasAr = 0.0;
-    public double svarPol = 0.0;
-    public ArrayList<Seam> history = new ArrayList();
+    private double wire = 0.0;
+    private double gas = 0.0;
+    private double gasCO2 = 0.0;
+    private double gasAr = 0.0;
+    private double svarPol = 0.0;
+    private ArrayList<Seam> history = new ArrayList<>();
 
 
+    private final CathetDao cathetDao;
 
-
-    @Autowired
-    private KatetDao katetDao;
+    public MainController(CathetDao cathetDao) {
+        this.cathetDao = cathetDao;
+    }
 
     @GetMapping("/add/{seam}")
     public String add(Model model, @PathVariable String seam) {
@@ -48,32 +43,26 @@ public class MainController {
 
     @GetMapping("/tables")
     public String tables(Model model) {
-        model.addAttribute("T1", katetDao.findAllBySeam("Т1"));
-        model.addAttribute("T3", katetDao.findAllBySeam("Т3"));
-        model.addAttribute("T6", katetDao.findAllBySeam("Т6"));
-        model.addAttribute("Н1", katetDao.findAllBySeam("Н1"));
-        model.addAttribute("У4", katetDao.findAllBySeam("У4"));
-
-
+        Set.of("Т1", "Т3", "Т6", "Н1", "У4").forEach(s -> model.addAttribute(s, cathetDao.findAllBySeam(s)));
         return "tables";
     }
 
     @GetMapping("/edit/{id}")
     public String editPage(Model model, @PathVariable int id) {
-        model.addAttribute("katet", katetDao.findById(id));
+        model.addAttribute("cathet", cathetDao.findById(id));
         return "edit";
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Katet katet, Model model) {
-        katetDao.save(katet);
+    public String edit(@ModelAttribute Cathet cathet) {
+        cathetDao.save(cathet);
         return "redirect:/tables";
     }
 
     @GetMapping("/tables/{id}")
-    public String deleteFromTable(Model model, @PathVariable int id) {
-        Katet katet = katetDao.findById(id);
-        katetDao.delete(katet);
+    public String deleteFromTable(@PathVariable int id) {
+        Cathet cathet = cathetDao.findById(id);
+        cathetDao.delete(cathet);
         return "redirect:/tables";
     }
 
@@ -81,33 +70,22 @@ public class MainController {
     public String calc(@RequestParam(name = "seam") String seam,
                        @RequestParam(name = "length") double lenght,
                        @RequestParam(name = "k") int k,
-                       RedirectAttributes redirectAttributes,
                        Model model) {
+
         if (seam.equals("null")) {
             model.addAttribute("fail", "Выберете тип шва");
             return "main";
-
         }
-        Katet katet = katetDao.findOneBySeamAndK(seam, k);
-        if (katet != null) {
-            wire = katet.getKoef() * lenght;
+
+        Cathet cathet = cathetDao.findOneBySeamAndCathet(seam, k);
+        if (cathet != null) {
+            wire = cathet.getCoefficient() * lenght;
             gas = wire * 1.5;
             gasCO2 = wire * 0.87;
             gasAr = wire * 0.39;
             svarPol = lenght * 10;
             history.clear();
-
-            history.add(new Seam(history.size()+1,katet, lenght));
-
-
-            redirectAttributes.addFlashAttribute("history", history);
-            redirectAttributes.addFlashAttribute("gasAr", String.format("%.2f", gasAr));
-            redirectAttributes.addFlashAttribute("gasCO2", String.format("%.2f", gasCO2));
-            redirectAttributes.addFlashAttribute("gas", String.format("%.2f", gas));
-            redirectAttributes.addFlashAttribute("wire", String.format("%.2f", wire));
-            redirectAttributes.addFlashAttribute("svarPol", String.format("%.2f", svarPol));
-
-
+            history.add(new Seam(history.size() + 1, cathet, lenght));
         } else {
             model.addAttribute("fail", "Выберете пожалуйста другой катет");
         }
@@ -115,25 +93,19 @@ public class MainController {
     }
 
     @GetMapping("/newSeam")
-    public String getCalc(
-            Model model) {
+    public String getCalc(Model model) {
         modelAdd(model);
         return "newSeam";
     }
 
     @PostMapping("/newSeam/remove")
-    public String removeSeam(@RequestParam(name = "katet") int katetId,
+    public String removeSeam(@RequestParam(name = "cathet") int cathetId,
                              @RequestParam(name = "seam") int seamId,
-                             @RequestParam(name = "lenght") double lenght,
-            Model model) {
-        System.out.println(seamId);
-        System.out.println(katetId);
-        System.out.println(lenght);
+                             @RequestParam(name = "lenght") double lenght) {
 
-//
-        var katet = katetDao.findById(katetId);
-        wire -= katet.getKoef() * lenght;
-        var localWire = katet.getKoef() * lenght;
+        var cathet = cathetDao.findById(cathetId);
+        wire -= cathet.getCoefficient() * lenght;
+        var localWire = cathet.getCoefficient() * lenght;
         gas -= localWire * 1.5;
         gasCO2 -= localWire * 0.87;
         gasAr -= localWire * 0.39;
@@ -141,11 +113,12 @@ public class MainController {
 
         Seam seam = null;
 
-        for(Seam s : history){
-            if(s.getId()==seamId){
+        for (Seam s : history) {
+            if (s.getId() == seamId) {
                 seam = s;
             }
         }
+
         history.remove(seam);
 
         return "redirect:/newSeam";
@@ -155,26 +128,24 @@ public class MainController {
     @PostMapping("/newSeam")
     public String calcPlus(@RequestParam(name = "seam") String seam,
                            @RequestParam(name = "length") double lenght,
-                           @RequestParam(name = "k") int k,
-                           RedirectAttributes redirectAttributes,
+                           @RequestParam(name = "cathet") int k,
                            Model model) {
         if (seam.equals("null")) {
             modelAdd(model);
             model.addAttribute("fail", "Выберете тип шва");
             return "newSeam";
         }
-        Katet katet = katetDao.findOneBySeamAndK(seam, k);
-        if (katet != null) {
-            history.add(new Seam(history.size()+1,katet, lenght));
-            wire += katet.getKoef() * lenght;
-            var localWire = katet.getKoef() * lenght;
+
+        Cathet cathet = cathetDao.findOneBySeamAndCathet(seam, k);
+        if (cathet != null) {
+            history.add(new Seam(history.size() + 1, cathet, lenght));
+            wire += cathet.getCoefficient() * lenght;
+            var localWire = cathet.getCoefficient() * lenght;
             gas += localWire * 1.5;
             gasCO2 += localWire * 0.87;
             gasAr += localWire * 0.39;
             svarPol += lenght * 10;
-
             modelAdd(model);
-
         } else {
             modelAdd(model);
             model.addAttribute("fail", "Выберете пожалуйста другой катет");
@@ -191,21 +162,19 @@ public class MainController {
         model.addAttribute("svarPol", String.format("%.2f", svarPol));
     }
 
-    @PostMapping("/add/{seam}")
-    public String add(@ModelAttribute Katet katet, Model model, BindingResult result, @PathVariable String seam) {
-        var seam2 = "Т1";
-        if (katet.getSeam().equals("null")) {
+    @PostMapping("/add")
+    public String add(@ModelAttribute Cathet cathet, Model model) {
+        if (cathet.getSeam().equals("null")) {
             model.addAttribute("fail", "Выберете тип шва");
             return "add";
         }
-        Katet katetFromDb = katetDao.findOneBySeamAndK(katet.getSeam(), katet.getK());
-        if (katetFromDb != null) {
+        Cathet cathetFromDb = cathetDao.findOneBySeamAndCathet(cathet.getSeam(), cathet.getCathet());
+        if (cathetFromDb != null) {
             model.addAttribute("fail", "Катет уже существует в базе данных");
             return "add";
         }
-        katetDao.save(katet);
+        cathetDao.save(cathet);
         model.addAttribute("fail", "Добавлено!");
         return "add";
     }
-
 }
