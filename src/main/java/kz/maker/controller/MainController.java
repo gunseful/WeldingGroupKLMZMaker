@@ -106,15 +106,11 @@ public class MainController {
     @PostMapping("/add")
     public String add(@ModelAttribute Cathet cathet, Model model) {
         Cathet cathetFromDb = cathetService.findOneBySeamAndCathet(cathet);
-        System.out.println(cathet.getSeam());
-
         if (cathetFromDb != null) {
             model.addAttribute("seam", cathet.getSeam());
             model.addAttribute("fail", "Катет уже существует в базе данных");
             return "add";
         }
-        System.out.println(cathet.getCoefficient());
-        System.out.println(cathet.getCathetValue());
         cathetService.save(cathet);
         model.addAttribute("fail", "Добавлено!");
         model.addAttribute("seam", cathet.getSeam());
