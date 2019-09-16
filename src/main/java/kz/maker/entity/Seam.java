@@ -1,4 +1,4 @@
-package test.entity;
+package kz.maker.entity;
 
 public class Seam {
     private int id;

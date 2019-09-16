@@ -31,7 +31,12 @@
                 <option name="seam" value="Т1">Т1</option>
                 <option name="seam" value="Т3">Т3</option>
                 <option name="seam" value="У4">У4</option>
+                <option name="seam" value="У4">У5</option>
                 <option name="seam" value="Н1">Н1</option>
+                <option name="seam" value="Н1">Т6</option>
+                <option name="seam" value="Н1">Т8</option>
+
+
             </select>
             <br>
             <input class="w3-input" type="number" placeholder="Катет в мм" name="k" required="required">

@@ -8,112 +8,58 @@
     <link rel="icon" type="image/png" href="<c:url value="/res/weld.png"/>"/>
 </head>
 <body>
-<div class="lefttopangle"><a href="/" class="w3-button w3-yellow">Home Page </a></div>
+<div class="lefttopangle">
+
+    <a href="/" class="w3-button w3-yellow">Home Page </a>
+
+</div>
 <table class="style">
     <caption class="heading">KLMZ MAKER WELDING GROUP</caption>
     <br>
 </table>
-<table class="style">
-    <caption class="heading">T1</caption>
-    <tr>
-        <th><p style="color: black">Катет</p></th>
-        <th><p style="color: black">Коэффициент</p></th>
-        <th><p style="color: black"></p></th>
-        <th><p style="color: black"></p></th>
-    </tr>
-    <c:forEach var="s" items="${Т1}">
+    <table class="style">
         <tr>
-            <td><p style="color: black">${s.getCathet()}</p></td>
-            <td><p style="color: black">${s.getCoefficient()}</p></td>
-            <td><a href="/tables/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-delete"></span></a></td>
-            <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
-        </tr>
-    </c:forEach>
-    <tr>
-        <td colspan="4"><a href="/add/Т1" class="w3-button"><span class="icon icon-add"></span></a></td>
+            <td colspan="5"><a href="/tables/Т1" class="w3-button w3-green w3-large">Т1</a>
+            </td>
+            <td colspan="5"><a href="/tables/Т3" class="w3-button w3-light-green w3-large">Т3</a>
+            </td>
+            <td colspan="5"><a href="/tables/Т6" class="w3-button w3-green w3-large">Т6</a>
+            </td>
+            <td colspan="5"><a href="/tables/Т8" class="w3-button w3-light-green w3-large">Т8</a>
+            </td>
+            <td colspan="5"><a href="/tables/У4" class="w3-button w3-green w3-large">У4</a>
+            </td>
+            <td colspan="5"><a href="/tables/У5" class="w3-button w3-light-green w3-large">У5</a>
+            </td>
+            <td colspan="5"><a href="/tables/Н1" class="w3-button w3-green w3-large">Н1</a>
+            </td>
 
-    </tr>
-</table>
-<table class="style">
-    <caption class="heading">T3</caption>
-    <tr>
-        <th><p style="color: black">Катет</p></th>
-        <th><p style="color: black">Коэффициент</p></th>
-        <th><p style="color: black"></p></th>
-        <th><p style="color: black"></p></th>
-    </tr>
-    <c:forEach var="s" items="${Т3}">
-        <tr>
-            <td><p style="color: black">${s.getCathet()}</p></td>
-            <td><p style="color: black">${s.getCoefficient()}</p></td>
-            <td><a href="/tables/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-delete"></span></a></td>
-            <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
         </tr>
-    </c:forEach>
-    <tr>
-        <td colspan="4"><a href="/add/Т3" class="w3-button"><span class="icon icon-add"></span></a></td>
+    </table>
+<c:if test="${seam!=null}">
+    <table class="style">
+        <caption class="heading">${seam}</caption>
+        <tr>
+            <th><p style="color: black">Катет</p></th>
+            <th><p style="color: black">Коэффициент</p></th>
+            <th><p style="color: black"></p></th>
+            <th><p style="color: black"></p></th>
+        </tr>
+        <c:forEach var="s" items="${seamList}">
+            <tr>
+                <td><p style="color: black">${s.getCathetValue()}</p></td>
+                <td><p style="color: black">${s.getCoefficient()}</p></td>
+                <td><a href="/tables/delete/${s.getId()}" class="w3-button w3-tiny"><span
+                        class="icon icon-delete"></span></a></td>
+                <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
+            </tr>
+        </c:forEach>
+        <tr>
+            <td colspan="4"><a href="/add/${seam}" class="w3-button"><span class="icon icon-add"></span></a></td>
+        </tr>
+    </table>
+</c:if>
 
-    </tr>
-</table>
-<table class="style">
-    <caption class="heading">T6</caption>
-    <tr>
-        <th><p style="color: black">Катет</p></th>
-        <th><p style="color: black">Коэффициент</p></th>
-        <th><p style="color: black"></p></th>
-        <th><p style="color: black"></p></th>
-    </tr>
-    <c:forEach var="s" items="${Т6}">
-        <tr>
-            <td><p style="color: black">${s.getCathet()}</p></td>
-            <td><p style="color: black">${s.getCoefficient()}</p></td>
-            <td><a href="/tables/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-delete"></span></a></td>
-            <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
-        </tr>
-    </c:forEach>
-    <tr>
-        <td colspan="4"><a href="/add/Т6" class="w3-button"><span class="icon icon-add"></span></a></td>
-    </tr>
-</table>
-<table class="style">
-    <caption class="heading">Н1</caption>
-    <tr>
-        <th><p style="color: black">Катет</p></th>
-        <th><p style="color: black">Коэффициент</p></th>
-        <th><p style="color: black"></p></th>
-        <th><p style="color: black"></p></th>
-    </tr>
-    <c:forEach var="s" items="${Н1}">
-        <tr>
-            <td><p style="color: black">${s.getCathet()}</p></td>
-            <td><p style="color: black">${s.getCoefficient()}</p></td>
-            <td><a href="/tables/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-delete"></span></a></td>
-            <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
-        </tr>
-    </c:forEach>
-    <tr>
-        <td colspan="4"><a href="/add/Н1" class="w3-button"><span class="icon icon-add"></span></a></td>
-    </tr>
-</table>
-<table class="style">
-    <caption class="heading">У4</caption>
-    <tr>
-        <th><p style="color: black">Катет</p></th>
-        <th><p style="color: black">Коэффициент</p></th>
-        <th><p style="color: black"></p></th>
-        <th><p style="color: black"></p></th>
-    </tr>
-    <c:forEach var="s" items="${У4}">
-        <tr>
-            <td><p style="color: black">${s.getCathet()}</p></td>
-            <td><p style="color: black">${s.getCoefficient()}</p></td>
-            <td><a href="/tables/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-delete"></span></a></td>
-            <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
-        </tr>
-    </c:forEach>
-    <tr>
-        <td colspan="4"><a href="/add/Т6" class="w3-button"><span class="icon icon-add"></span></a></td>
-    </tr>
-</table>
+
 </body>
 </html>

@@ -33,7 +33,7 @@
                 <p style="color: black">${cathet.getSeam()}</p>
                 <input type="hidden" class="w3-input" value="${cathet.getSeam()}" name="seam" >
             </td>
-            <td><input class="w3-input" type="number" value="${cathet.getCathet()}" name="Cathet" required="required"></td>
+            <td><input class="w3-input" type="number" value="${cathet.getCathetValue()}" name="cathetValue" required="required"></td>
             <td><input class="w3-input" type="number" step="0.001" value="${cathet.getCoefficient()}" name="coefficient" required="required"></td>
             <td><input type="submit" class="w3-button w3-black" value="SAVE"/></td>
         </form>

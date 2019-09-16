@@ -22,8 +22,8 @@
         <div class="box">
             <p class="heading2">Добавление нового катета шва</p>
             <input hidden name="seam" value="${seam}">
-            <input class="w3-input" type="number" placeholder="Катет в мм" name="k" required="required">
-            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="koef"
+            <input class="w3-input" type="number" placeholder="Катет в мм" name="cathetValue" required="required">
+            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficient"
                    required="required">
             <button class="w3-button w3-black" type="submit">Добавить в базу</button>
             <br>
