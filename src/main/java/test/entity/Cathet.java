@@ -25,41 +25,15 @@ public class Cathet {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public double getCoefficient() {
         return coefficient;
-    }
-
-    public void setCoefficient(double coefficient) {
-        this.coefficient = coefficient;
     }
 
     public int getCathet() {
         return cathet;
     }
 
-    public void setCathet(int cathet) {
-        this.cathet = cathet;
-    }
-
     public String getSeam() {
         return seam;
-    }
-
-    public void setSeam(String seam) {
-        this.seam = seam;
-    }
-
-    @Override
-    public String toString() {
-        return "Katet{" +
-                "id=" + id +
-                ", koef=" + coefficient +
-                ", k=" + cathet +
-                ", seam='" + seam + '\'' +
-                '}';
     }
 }

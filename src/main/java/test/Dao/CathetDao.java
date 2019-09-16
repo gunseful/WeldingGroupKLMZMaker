@@ -9,5 +9,4 @@ public interface CathetDao extends JpaRepository<Cathet, Long> {
     Cathet findOneBySeamAndCathet(String seam, int k);
     List<Cathet> findAllBySeam(String seam);
     Cathet findById(int id);
-
 }
