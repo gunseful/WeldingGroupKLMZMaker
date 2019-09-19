@@ -9,19 +9,17 @@
 </head>
 <body>
 <div class="lefttopangle"><a href="/" class="w3-button w3-yellow">Home Page </a>
-    <a href="/tables" class="w3-button w3-green">Таблицы</a></div>
+    <a href="/tables" class="w3-button w3-green">Таблицы</a>
+    <a href="/cutting" class="w3-button w3-green">Расчет резки</a></div>
 <table class="style">
     <caption class="heading">KLMZ MAKER WELDING GROUP</caption>
     <br>
-    <c:if test="${fail!=null}">
-        <caption class="heading">${fail}</caption>
-    </c:if>
 </table>
 <table class="style">
     <form method="post">
         <div class="box">
             <c:if test="${fail!=null}">
-                <p style="color: red">Выберете тип шва!</p>
+                <p style="color: red">${fail}</p>
             </c:if>
             <c:if test="${fail==null}">
                 <p class="heading2">Расчет норм расходов сварки</p>
@@ -31,10 +29,12 @@
                 <option name="seam" value="Т1">Т1</option>
                 <option name="seam" value="Т3">Т3</option>
                 <option name="seam" value="У4">У4</option>
-                <option name="seam" value="У4">У5</option>
+                <option name="seam" value="У5">У5</option>
                 <option name="seam" value="Н1">Н1</option>
-                <option name="seam" value="Н1">Т6</option>
-                <option name="seam" value="Н1">Т8</option>
+                <option name="seam" value="Т6">Т6</option>
+                <option name="seam" value="Т8">Т8</option>
+                <option name="seam" value="С15">С15</option>
+                <option name="seam" value="С8">С8</option>
 
 
             </select>

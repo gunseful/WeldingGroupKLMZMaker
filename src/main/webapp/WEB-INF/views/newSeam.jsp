@@ -22,27 +22,34 @@
             <br>
             <br>
             <br>
+            <br>
+            <br>
+            <br>
+
             <c:if test="${wire!=null}">
                 <div style="white-space: nowrap; opacity: 0.7; color: black; background-color: white; align-content: center; border: 30px; box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);">
                     <p style="color: black; background-color: white; text-align: center; ">Расход проволоки -
                         <u><b>${wire}</b></u>
-                        кг</p>
-                    <p style="color: black; background-color: white; text-align: center">Расход углекислоты -
+                        кг<br>
+                    Расход углекислоты -
                         <u><b>${gas}</b></u>
-                        м3</p>
-                    <p style="color: black; background-color: white; text-align: center">Расход смеси: СO2 -
+                        м3<br>
+                    Расход смеси: СO2 -
                         <u><b>${gasCO2}</b></u>
-                        м3; Ar - <u><b>${gasAr}</b></u> м3</p>
-                    <p style="color: black; background-color: white; text-align: center">Расход СварПола -
+                        м3; Ar - <u><b>${gasAr}</b></u> м3<br>
+                    Расход СварПола -
                         <u><b>${svarPol}</b></u>
-                        гр</p>
+                        гр<br>
+                    Расход электродов на прихватки -
+                        <u><b>${electrod}</b></u>
+                        кг</p>
                 </div>
             </c:if>
             <c:if test="${fail!=null}">
                 <p style="color: red">${fail}</p>
             </c:if>
             <c:if test="${fail==null}">
-                <p class="heading2">Расчет норм расходов сварки</p>
+                <p class="heading2">Добавить еще один шов</p>
             </c:if>
             <input hidden name="wire" value=${wire}>
             <input hidden name="gas" value=${gas}>
@@ -54,10 +61,13 @@
                 <option name="seam" value="Т1">Т1</option>
                 <option name="seam" value="Т3">Т3</option>
                 <option name="seam" value="У4">У4</option>
-                <option name="seam" value="У4">У5</option>
+                <option name="seam" value="У5">У5</option>
                 <option name="seam" value="Н1">Н1</option>
-                <option name="seam" value="Н1">Т6</option>
-                <option name="seam" value="Н1">Т8</option>
+                <option name="seam" value="Т6">Т6</option>
+                <option name="seam" value="Т8">Т8</option>
+                <option name="seam" value="С15">С15</option>
+                <option name="seam" value="С8">С8</option>
+
             </select>
             <br>
             <input class="w3-input" type="number" placeholder="Катет в мм" name="cathet" required="required">

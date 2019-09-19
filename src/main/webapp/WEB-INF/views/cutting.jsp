@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Add new SEAM</title>
+    <title>KLMZ MAKER WELDING GROUP</title>
     <link href="<c:url value="/res/style.css"/>" rel="stylesheet" type="text/css"/>
     <link href="<c:url value="/res/w3.css"/>" rel="stylesheet" type="text/css"/>
     <link rel="icon" type="image/png" href="<c:url value="/res/weld.png"/>"/>
@@ -15,22 +15,19 @@
     <br>
 </table>
 <table class="style">
-    <form method="post" action="/add">
+    <form method="post">
         <div class="box">
             <c:if test="${fail!=null}">
-                <p style="color: red" class="heading2">${fail}</p>
+                <p style="color: red">${fail}</p>
             </c:if>
             <c:if test="${fail==null}">
-                <p class="heading2">Добавление нового катета шва</p>
+                <p class="heading2">Расчет норм расходов термической резки</p>
             </c:if>
-
-            <input hidden name="seam" value="${seam}">
-            <input class="w3-input" type="number" placeholder="Катет в мм" name="cathetValue" required="required">
-            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficient"
+            <input maxlength="5" class="w3-input" type="number" placeholder="Толщина в мм" name="b" required="required">
+            <input maxlength="20" class="w3-input" type="number" step="0.001" placeholder="Длина реза в м" name="length"
                    required="required">
-            <button class="w3-button w3-black" type="submit">Добавить в базу</button>
+            <button class="w3-button w3-black" type="submit">Посчитать норму</button>
             <br>
-            <a href="/" class="w3-button w3-yellow">К подсчетам норм</a>
         </div>
     </form>
 </table>

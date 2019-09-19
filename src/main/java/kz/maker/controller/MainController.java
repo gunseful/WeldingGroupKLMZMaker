@@ -1,7 +1,9 @@
 package kz.maker.controller;
 
 import kz.maker.entity.Cathet;
+import kz.maker.entity.Plate;
 import kz.maker.service.CathetService;
+import kz.maker.service.PlateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MainController {
 
-    public MainController(CathetService cathetService) {
+    public MainController(CathetService cathetService, PlateService plateService) {
         this.cathetService = cathetService;
+        this.plateService = plateService;
     }
 
     private final CathetService cathetService;
+    private final PlateService plateService;
 
     @GetMapping("/add/{seam}")
     public String add(Model model, @PathVariable String seam) {
@@ -26,6 +30,69 @@ public class MainController {
     public String greeting(String name, Model model) {
         model.addAttribute("name", name);
         return "main";
+    }
+
+    @GetMapping("/cutting")
+    public String cutting(String name, Model model) {
+        model.addAttribute("name", name);
+        return "cutting";
+    }
+
+    @PostMapping("/cutting")
+    public String calc(@RequestParam(name = "length") double lenght,
+                       @RequestParam(name = "b") int k,
+                       Model model) {
+        if(plateService.calc(k, lenght, model)){
+            return "redirect:/keepcutting";
+        }else{
+            return "cutting";
+        }
+    }
+
+    @GetMapping("/keepcutting")
+    public String keepcutting(Model model) {
+        plateService.modelAdd(model);
+        return "keepCutting";
+    }
+
+
+    @GetMapping("/addNewCut")
+    public String addNewCut() {
+        return "addNewCut";
+    }
+
+    @PostMapping("/addNewCut")
+    public String addNewCut(@ModelAttribute Plate plate, Model model) {
+        Plate plateFromDb = plateService.findOneByPlateValue(plate.getPlateValue());
+        if (plateFromDb != null) {
+            model.addAttribute("b", plate.getPlateValue());
+            model.addAttribute("fail", "Катет уже существует в базе данных");
+            return "add";
+        }
+        plateService.save(plate);
+        model.addAttribute("fail", "Добавлено!");
+        model.addAttribute("b", plate.getPlateValue());
+        return "addNewCut";
+    }
+
+
+    @PostMapping("/keepcutting")
+    public String calcPlusCut(
+                           @RequestParam(name = "length") double lenght,
+                           @RequestParam(name = "b") int k,
+                           Model model) {
+        plateService.calcPlus(k, lenght, model);
+        return "keepCutting";
+    }
+
+
+    @PostMapping("/keepcutting/remove")
+    public String removeCut(@RequestParam(name = "plateId") int plateId,
+                             @RequestParam(name = "cutId") int cutId,
+                             @RequestParam(name = "lenght") double lenght) {
+
+        plateService.calcMinus(plateId, cutId, lenght);
+        return "redirect:/keepcutting";
     }
 
     @GetMapping("/tables")
@@ -69,8 +136,11 @@ public class MainController {
             model.addAttribute("fail", "Выберете тип шва");
             return "main";
         }
-        cathetService.calc(seam, lenght, k, model);
-        return "redirect:/newSeam";
+        if(cathetService.calc(seam, lenght, k, model)) {
+            return "redirect:/newSeam";
+        }else{
+            return "main";
+        }
     }
 
     @GetMapping("/newSeam")

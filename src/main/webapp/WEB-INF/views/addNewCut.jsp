@@ -15,18 +15,18 @@
     <br>
 </table>
 <table class="style">
-    <form method="post" action="/add">
+    <form method="post" action="/addNewCut">
         <div class="box">
             <c:if test="${fail!=null}">
                 <p style="color: red" class="heading2">${fail}</p>
             </c:if>
             <c:if test="${fail==null}">
-                <p class="heading2">Добавление нового катета шва</p>
+                <p class="heading2">Добавление реза</p>
             </c:if>
-
-            <input hidden name="seam" value="${seam}">
-            <input class="w3-input" type="number" placeholder="Катет в мм" name="cathetValue" required="required">
-            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficient"
+            <input class="w3-input" type="number" placeholder="Толщина" name="plateValue" required="required">
+            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficientO2"
+                   required="required">
+            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficientProp"
                    required="required">
             <button class="w3-button w3-black" type="submit">Добавить в базу</button>
             <br>
