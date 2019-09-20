@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="lefttopangle"><a href="/" class="w3-button w3-yellow">Home Page </a>
-    <a href="/tables" class="w3-button w3-green">Таблицы</a></div>
+</div>
 <table class="style">
     <caption class="heading">KLMZ MAKER WELDING GROUP</caption>
     <br>
@@ -24,13 +24,13 @@
                 <p class="heading2">Добавление реза</p>
             </c:if>
             <input class="w3-input" type="number" placeholder="Толщина" name="plateValue" required="required">
-            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficientO2"
+            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент O2" name="coefficientO2"
                    required="required">
-            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент" name="coefficientProp"
+            <input class="w3-input" type="number" step="0.001" placeholder="Коэффициент Пропана" name="coefficientProp"
                    required="required">
             <button class="w3-button w3-black" type="submit">Добавить в базу</button>
             <br>
-            <a href="/" class="w3-button w3-yellow">К подсчетам норм</a>
+            <a href="/cutting" class="w3-button w3-yellow">К подсчетам норм</a>
         </div>
     </form>
 </table>

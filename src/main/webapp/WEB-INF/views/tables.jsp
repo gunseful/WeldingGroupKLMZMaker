@@ -55,7 +55,7 @@
                 <td><p style="color: black">${s.getCoefficient()}</p></td>
                 <td><a href="/tables/delete/${s.getId()}" class="w3-button w3-tiny"><span
                         class="icon icon-delete"></span></a></td>
-                <td><a href="/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
+                <td><a href="/tables/edit/${s.getId()}" class="w3-button w3-tiny"><span class="icon icon-edit"></span></a></td>
             </tr>
         </c:forEach>
         <tr>

@@ -23,7 +23,7 @@
         <th><p style="color: black"></p></th>
     </tr>
     <tr>
-        <c:url value="/edit" var="var"/>
+        <c:url value="/tables/edit" var="var"/>
         <form action="${var}" method="post">
             <td>
                 <p style="color: black">${cathet.getId()}</p>

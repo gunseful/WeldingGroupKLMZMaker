@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="lefttopangle"><a href="/" class="w3-button w3-yellow">Home Page </a>
-    <a href="/tables" class="w3-button w3-green">Таблицы</a></div>
+    <a href="/add/cut/" class="w3-button w3-green">Добавить новый коэффициент</a></div>
 <table class="style">
     <caption class="heading">KLMZ MAKER WELDING GROUP</caption>
     <br>

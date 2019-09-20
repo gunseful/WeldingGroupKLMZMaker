@@ -76,7 +76,7 @@
 
             <button class="w3-button w3-white" type="submit"><span class="icon icon-add"></span></button><br>
             <br>
-            <button onclick="window.location.href='/'" class="w3-button w3-large w3-red">Сброс</button>
+            <button onclick="window.location.href='/weld'" class="w3-button w3-large w3-red">Сброс</button>
 
             <br>
         </div>
@@ -93,7 +93,7 @@
                 <th bgcolor="white"></th>
             </tr>
             <c:forEach var="seam" items="${history}">
-                <form action="/newSeam/remove/" method="post">
+                <form action="/weld/newSeam/remove" method="post">
                     <input hidden name="seam" value=${seam.id}>
                     <input hidden name="cathet" value=${seam.cathet.id}>
                     <input hidden name="lenght" value=${seam.lenght}>

@@ -9,8 +9,7 @@
 </head>
 <body>
 <div class="lefttopangle"><a href="/" class="w3-button w3-yellow">Home Page </a>
-    <a href="/tables" class="w3-button w3-green">Таблицы</a>
-    <a href="/cutting" class="w3-button w3-green">Расчет резки</a></div>
+    <a href="/tables" class="w3-button w3-green">Таблицы</a></div>
 <table class="style">
     <caption class="heading">KLMZ MAKER WELDING GROUP</caption>
     <br>

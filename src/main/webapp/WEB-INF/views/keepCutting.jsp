@@ -67,7 +67,7 @@
                 <th bgcolor="white"></th>
             </tr>
             <c:forEach var="cut" items="${history}">
-                <form action="/keepcutting/remove/" method="post">
+                <form action="/cutting/more/remove/" method="post">
                     <input hidden name="plateId" value=${cut.plate.id}>
                     <input hidden name="cutId" value=${cut.id}>
                     <input hidden name="lenght" value=${cut.lenght}>
