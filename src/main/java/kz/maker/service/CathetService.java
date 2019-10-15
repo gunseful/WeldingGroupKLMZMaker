@@ -27,15 +27,14 @@ public class CathetService {
         this.cathetDao = cathetDao;
     }
 
+
     public Cathet findById(int id){
         return cathetDao.findById(id);
     }
 
     public Cathet findOneBySeamAndCathet(Cathet cathet){
         return cathetDao.findOneBySeamAndCathetValue(cathet.getSeam(), cathet.getCathetValue());
-
     }
-
 
     public void deleteFromTable(int id){
         Cathet cathet = cathetDao.findById(id);
@@ -117,6 +116,5 @@ public class CathetService {
         model.addAttribute("gasAr", String.format("%.2f", gasAr));
         model.addAttribute("svarPol", String.format("%.2f", svarPol));
         model.addAttribute("electrod", String.format("%.2f", electrod));
-
     }
 }

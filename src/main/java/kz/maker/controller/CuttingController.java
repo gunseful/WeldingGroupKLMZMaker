@@ -1,6 +1,5 @@
 package kz.maker.controller;
 
-import kz.maker.service.CathetService;
 import kz.maker.service.PlateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/cutting")
 public class CuttingController {
 
+    private final PlateService plateService;
 
     public CuttingController(PlateService plateService) {
         this.plateService = plateService;
     }
 
-    private final PlateService plateService;
 
     @GetMapping
     public String cutting(String name, Model model) {
@@ -27,10 +26,10 @@ public class CuttingController {
     }
 
     @PostMapping
-    public String calc(@RequestParam(name = "length") double lenght,
+    public String calc(@RequestParam(name = "length") double length,
                        @RequestParam(name = "b") int k,
                        Model model) {
-        if(plateService.calc(k, lenght, model)){
+        if(plateService.calc(k, length, model)){
             return "redirect:/cutting/more";
         }else{
             return "cutting";
@@ -45,10 +44,10 @@ public class CuttingController {
 
     @PostMapping("more")
     public String calcPlusCut(
-            @RequestParam(name = "length") double lenght,
+            @RequestParam(name = "length") double length,
             @RequestParam(name = "b") int k,
             Model model) {
-        plateService.calcPlus(k, lenght, model);
+        plateService.calcPlus(k, length, model);
         return "keepCutting";
     }
 
@@ -56,11 +55,9 @@ public class CuttingController {
     @PostMapping("more/remove")
     public String removeCut(@RequestParam(name = "plateId") int plateId,
                             @RequestParam(name = "cutId") int cutId,
-                            @RequestParam(name = "lenght") double lenght) {
+                            @RequestParam(name = "length") double length) {
 
-        plateService.calcMinus(plateId, cutId, lenght);
+        plateService.calcMinus(plateId, cutId, length);
         return "redirect:/cutting/more";
     }
-
-
 }

@@ -2,7 +2,6 @@ package kz.maker.controller;
 
 import kz.maker.entity.Cathet;
 import kz.maker.service.CathetService;
-import kz.maker.service.PlateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/tables")
 public class TablesController {
 
+    private final CathetService cathetService;
+
+
     public TablesController(CathetService cathetService) {
         this.cathetService = cathetService;
     }
 
-    private final CathetService cathetService;
 
     @GetMapping
     public String tables() {
@@ -29,16 +30,16 @@ public class TablesController {
         return "tables";
     }
 
-    @GetMapping("edit/{id}")
-    public String editPage(Model model, @PathVariable int id) {
-        model.addAttribute("cathet", cathetService.findById(id));
-        return "edit";
-    }
-
     @PostMapping("edit")
     public String edit(@ModelAttribute Cathet cathet) {
         cathetService.save(cathet);
         return "redirect:/tables";
+    }
+
+    @GetMapping("edit/{id}")
+    public String editPage(Model model, @PathVariable int id) {
+        model.addAttribute("cathet", cathetService.findById(id));
+        return "edit";
     }
 
     @GetMapping("delete/{id}")
@@ -47,6 +48,4 @@ public class TablesController {
         cathetService.deleteFromTable(id);
         return getTableByName(model, s.getSeam());
     }
-
-
 }
