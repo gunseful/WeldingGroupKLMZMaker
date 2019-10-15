@@ -67,6 +67,7 @@
                 <option name="seam" value="Т8">Т8</option>
                 <option name="seam" value="С15">С15</option>
                 <option name="seam" value="С8">С8</option>
+                <option name="seam" value="С17">С17</option>
 
             </select>
             <br>
@@ -96,7 +97,7 @@
                 <form action="/weld/newSeam/remove" method="post">
                     <input hidden name="seam" value=${seam.id}>
                     <input hidden name="cathet" value=${seam.cathet.id}>
-                    <input hidden name="lenght" value=${seam.lenght}>
+                    <input hidden name="length" value=${seam.length}>
                     <tr>
                         <td bgcolor="white" align="center">
                             <p style="color: black">${seam.cathet.seam}</p>
@@ -105,7 +106,7 @@
                             <p style="color: black">${seam.cathet.cathetValue}</p>
                         </td>
                         <td bgcolor="white" align="center">
-                            <p style="color: black">${seam.lenght}</p>
+                            <p style="color: black">${seam.length}</p>
                         </td>
                         <td bgcolor="white" align="center">
                             <button class="w3-button w3-tiny" type="submit"><span class="icon icon-delete"></span>

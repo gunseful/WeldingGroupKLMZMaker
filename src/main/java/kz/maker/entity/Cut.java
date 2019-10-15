@@ -3,12 +3,12 @@ package kz.maker.entity;
 public class Cut {
     private int id;
     private Plate plate;
-    private double lenght;
+    private double length;
 
-    public Cut(int id, Plate plate, double lenght) {
+    public Cut(int id, Plate plate, double length) {
         this.id = id;
         this.plate = plate;
-        this.lenght = lenght;
+        this.length = length;
     }
 
     public int getId() {
@@ -19,8 +19,8 @@ public class Cut {
         return plate;
     }
 
-    public double getLenght() {
-        return lenght;
+    public double getLength() {
+        return length;
     }
 
 }

@@ -70,13 +70,13 @@
                 <form action="/cutting/more/remove/" method="post">
                     <input hidden name="plateId" value=${cut.plate.id}>
                     <input hidden name="cutId" value=${cut.id}>
-                    <input hidden name="lenght" value=${cut.lenght}>
+                    <input hidden name="length" value=${cut.length}>
                     <tr>
                         <td bgcolor="white" align="center">
                             <p style="color: black">${cut.plate.plateValue}</p>
                         </td>
                         <td bgcolor="white" align="center">
-                            <p style="color: black">${cut.lenght}</p>
+                            <p style="color: black">${cut.length}</p>
                         </td>
                         <td bgcolor="white" align="center">
                             <button class="w3-button w3-tiny" type="submit"><span class="icon icon-delete"></span>

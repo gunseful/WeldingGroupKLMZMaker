@@ -3,12 +3,12 @@ package kz.maker.entity;
 public class Seam {
     private int id;
     private Cathet cathet;
-    private double lenght;
+    private double length;
 
-    public Seam(int id, Cathet cathet, double lenght) {
+    public Seam(int id, Cathet cathet, double length) {
         this.id = id;
         this.cathet = cathet;
-        this.lenght = lenght;
+        this.length = length;
     }
 
     public int getId() {
@@ -19,8 +19,8 @@ public class Seam {
         return cathet;
     }
 
-    public double getLenght() {
-        return lenght;
+    public double getLength() {
+        return length;
     }
 
 }

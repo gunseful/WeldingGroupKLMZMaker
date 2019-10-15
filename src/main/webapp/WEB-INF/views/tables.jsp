@@ -37,6 +37,8 @@
             </td>
             <td colspan="5"><a href="/tables/С8" class="w3-button w3-green w3-large">С8</a>
             </td>
+            <td colspan="5"><a href="/tables/С17" class="w3-button w3-green w3-large">С17</a>
+            </td>
 
         </tr>
     </table>

@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/add")
 public class AddController {
 
+    private final CathetService cathetService;
+    private final PlateService plateService;
+
     public AddController(CathetService cathetService, PlateService plateService) {
         this.cathetService = cathetService;
         this.plateService = plateService;
     }
-
-    private final CathetService cathetService;
-    private final PlateService plateService;
 
     @GetMapping("{seam}")
     public String add(Model model, @PathVariable String seam) {

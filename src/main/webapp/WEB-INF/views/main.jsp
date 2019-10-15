@@ -34,6 +34,7 @@
                 <option name="seam" value="Т8">Т8</option>
                 <option name="seam" value="С15">С15</option>
                 <option name="seam" value="С8">С8</option>
+                <option name="seam" value="С17">С17</option>
 
 
             </select>
